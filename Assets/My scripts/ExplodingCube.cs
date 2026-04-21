@@ -38,7 +38,9 @@ public class ExplodingCube : MonoBehaviour
 
     private void CloneCubes()
     {
-        int spawnCount = Random.Range(2, 7);
+        int minValue = 2;
+        int maxValue = 6;
+        int spawnCount = Random.Range(minValue, maxValue + 1);
         float nextChance = _cloneChance / 2f;
         Vector3 nextScale = transform.localScale / 2f;
 
