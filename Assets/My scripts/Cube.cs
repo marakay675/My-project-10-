@@ -1,28 +1,22 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Cube : MonoBehaviour
 {
-    [SerializeField] private CubeSpawner _spawner;
-    [SerializeField] private Detonator _exploder;
+    public event Action<Cube> Clicked;
 
-    private float _cloneChance = 1.0f;
+    public float CloneChance { get; private set; } = 1.0f;
 
     public void Init(float chance, Vector3 scale)
     {
-        _cloneChance = chance;
+        CloneChance = chance;
         transform.localScale = scale;
     }
 
-    public void ProcessClick()
+    private void OnMouseUpAsButton()
     {
-        if (Random.value <= _cloneChance)
-        {
-            var spawnedBodies = _spawner.Spawn(_cloneChance, transform);
-            _exploder.ApplyForce(spawnedBodies, transform.position);
-        }
-
-        Destroy(gameObject);
+        Clicked.Invoke(this);
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class CubeSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject _prefab;
+    [SerializeField] private CubeController _controller;
 
     public List<Rigidbody> Spawn(float currentChance, Transform parentTransform)
     {
@@ -25,6 +26,8 @@ public class CubeSpawner : MonoBehaviour
             if (cubeScript != null)
             {
                 cubeScript.Init(nextChance, nextScale);
+                _controller.RegisterCube(cubeScript);
+
                 Rigidbody rb = newCube.GetComponent<Rigidbody>();
 
                 if (rb != null)

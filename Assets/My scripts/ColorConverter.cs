@@ -6,10 +6,10 @@ public class ColorConverter : MonoBehaviour
 {
     private void Start()
     {
-        SetNewColor();
+        ChangeColor();
     }
 
-    public void SetNewColor()
+    public void ChangeColor()
     {
         Renderer renderer = gameObject.GetComponent<Renderer>();
 
