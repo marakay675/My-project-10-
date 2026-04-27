@@ -4,23 +4,23 @@ using UnityEngine;
 
 public class CubeSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject _prefab;
     [SerializeField] private CubeController _controller;
 
     public List<Rigidbody> Spawn(float currentChance, Transform parentTransform)
     {
         List<Rigidbody> spawnedBodies = new List<Rigidbody>();
 
+        float devisor = 2f;
         int minValue = 2;
         int maxValue = 6;
         int spawnCount = Random.Range(minValue, maxValue + 1);
 
-        float nextChance = currentChance / 2f;
-        Vector3 nextScale = parentTransform.localScale / 2f;
+        float nextChance = currentChance / devisor;
+        Vector3 nextScale = parentTransform.localScale / devisor;
 
         for (int i = 0; i < spawnCount; i++)
         {
-            GameObject newCube = Instantiate(_prefab, parentTransform.position, parentTransform.rotation);
+            GameObject newCube = Instantiate(gameObject, parentTransform.position, parentTransform.rotation);
             Cube cubeScript = newCube.GetComponent<Cube>();
 
             if (cubeScript != null)
