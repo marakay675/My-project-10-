@@ -5,10 +5,10 @@ using System;
 
 public class InputProcessor : MonoBehaviour
 {
-    public static event Action<Vector3, float> OnCubeClicked;
+    public event Action<Vector3, float> CubeClicked;
 
     private void OnMouseUpAsButton()
     {
-        OnCubeClicked?.Invoke(transform.position, transform.localScale.x);
+        CubeClicked?.Invoke(transform.position, transform.localScale.x);
     }
 }

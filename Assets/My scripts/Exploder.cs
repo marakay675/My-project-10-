@@ -2,21 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Detonator1 : MonoBehaviour
+public class Exploder : MonoBehaviour
 {
     private float _explosionForce = 500f;
     private float _explosionRadius = 5f;
-
-    private void OnEnable()
-    {
-        InputProcessor.OnCubeClicked += Explode;
-    }
-
-    private void OnDisable()
-    {
-        InputProcessor.OnCubeClicked -= Explode;
-        
-    }
 
     public void Explode(Vector3 position, float currentScale)
     {
